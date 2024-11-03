@@ -24,7 +24,7 @@ class PostService(IPostService):
                 post_list.append(post)
         return post_list
 
-    async def get_all_posts_by_body(self, body: str) -> str:
+    async def get_all_posts_by_body(self, body: str):
         before_fil = await self.repository.get_all_posts()
         post_list = []
         for post in before_fil:
