@@ -1,12 +1,10 @@
 1. REST countries 
 https://restcountries.com/
 https://restcountries.com/v3.1/all?fields=name,flags
-(Dodatkowo może API GPT 4o mini)
 
 Możliwość wyszukiwania informacji o krajach. Filtrowanie informacji pod względem różnych kryteriów. Dopasowywanie nazw krajów do ich flag.
 Możliwość dodania do listy krajów już odwiedzonych. Tworzenie konta i logowanie 
 
-Dodatkowe ciekawostki z API chatu.
 
 2. Tasty API
 https://rapidapi.com/apidojo/api/tasty
