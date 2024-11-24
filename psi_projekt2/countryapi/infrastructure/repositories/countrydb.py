@@ -22,12 +22,12 @@ class CountryRepository(ICountryRepository):
             select(country_table, continent_table, user_table)
             .select_from(
                 join(
-                    country_table,
                     join(
+                        country_table,
                         continent_table,
-                        user_table,
+                        country_table.c.continent_id == continent_table.c.id
                     ),
-                    country_table.c.continent_id == continent_table.c.id,
+                    user_table,
                     country_table.c.user_id == user_table.c.id
                 )
             )
@@ -47,7 +47,7 @@ class CountryRepository(ICountryRepository):
         countries = await database.fetch_all(query)
 
         return [Country(**dict(country)) for country in countries]
-    
+
 
     async def get_by_id(self, country_id: int) -> Any | None:
 
@@ -55,12 +55,12 @@ class CountryRepository(ICountryRepository):
             select(country_table, continent_table, user_table)
             .select_from(
                 join(
-                    country_table,
                     join(
+                        country_table,
                         continent_table,
-                        user_table,
+                        country_table.c.continent_id == continent_table.c.id
                     ),
-                    country_table.c.continent_id == continent_table.c.id,
+                    user_table,
                     country_table.c.user_id == user_table.c.id
                 )
             )
@@ -72,18 +72,18 @@ class CountryRepository(ICountryRepository):
         return CountryDTO.from_record(country) if country else None
 
 
-    async def get_by_name(self, name: int) -> Any | None:
+    async def get_by_name(self, name: str) -> Any | None:
 
         query = (
             select(country_table, continent_table, user_table)
             .select_from(
                 join(
-                    country_table,
                     join(
+                        country_table,
                         continent_table,
-                        user_table,
+                        country_table.c.continent_id == continent_table.c.id
                     ),
-                    country_table.c.continent_id == continent_table.c.id,
+                    user_table,
                     country_table.c.user_id == user_table.c.id
                 )
             )

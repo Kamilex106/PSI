@@ -11,6 +11,11 @@ class IContinentService(ABC):
         """ """
 
     @abstractmethod
+    async def get_continent_by_alias(self, alias: str) -> Continent | None:
+        """ """
+
+
+    @abstractmethod
     async def get_all_continents(self) -> Iterable[Continent]:
         """ """
 

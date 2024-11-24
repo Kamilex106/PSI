@@ -37,9 +37,9 @@ class CountryDTO(BaseModel):
             continent=ContinentDTO(
                 id=record_dict.get("id_1"),
                 name=record_dict.get("name_1"),
-                alias=record_dict.get("alias_1"),
+                alias=record_dict.get("alias"),
             ),
-            user_id=UserDTO(
+            user=UserDTO(
                 id=record_dict.get("id_2"),
                 name=record_dict.get("name_2"),
             ),

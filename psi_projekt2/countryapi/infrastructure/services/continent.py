@@ -19,6 +19,10 @@ class ContinentService(IContinentService):
 
         return await self._repository.get_continent_by_id(continent_id)
 
+    async def get_continent_by_alias(self, alias: str) -> Continent | None:
+
+        return await self._repository.get_continent_by_alias(alias)
+
     async def get_all_continents(self) -> Iterable[Continent]:
 
         return await self._repository.get_all_continents()

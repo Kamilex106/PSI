@@ -1,6 +1,5 @@
 from pydantic import BaseModel, ConfigDict  # type: ignore
 
-
 class ContinentDTO(BaseModel):
     id: int
     name: str

@@ -4,6 +4,7 @@ from pydantic import BaseModel, ConfigDict
 
 class UserIn(BaseModel):
     name: str
+    password: str
 
 
 

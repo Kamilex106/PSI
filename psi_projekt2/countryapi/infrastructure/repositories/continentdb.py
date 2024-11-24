@@ -5,6 +5,7 @@ from asyncpg import Record  # type: ignore
 from countryapi.core.domain.location import Continent, ContinentIn
 from countryapi.core.repositories.icontinent import IContinentRepository
 from countryapi.db import continent_table, database
+from countryapi.infrastructure.dto.countrydto import CountryDTO
 
 
 class ContinentRepository(IContinentRepository):
@@ -15,6 +16,20 @@ class ContinentRepository(IContinentRepository):
         continent = await self._get_by_id(continent_id)
 
         return Continent(**dict(continent)) if continent else None
+
+
+    async def get_continent_by_alias(self, alias: str) -> Any | None:
+
+        query = (
+            continent_table.select()
+            .where(continent_table.c.alias == alias)
+            .order_by(continent_table.c.name.asc())
+        )
+
+        continent = await database.fetch_one(query)
+
+        return Continent(**dict(continent)) if continent else None
+
 
     async def get_all_continents(self) -> Iterable[Any]:
 

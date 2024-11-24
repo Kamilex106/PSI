@@ -10,6 +10,9 @@ class IContinentRepository(ABC):
     async def get_continent_by_id(self, continent_id: int) -> Any | None:
         """ """
 
+    @abstractmethod
+    async def get_continent_by_alias(self, alias: str) -> Any | None:
+        """ """
 
     @abstractmethod
     async def get_all_continents(self) -> Iterable[Any]:

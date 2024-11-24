@@ -46,6 +46,20 @@ async def get_continent_by_id(
     raise HTTPException(status_code=404, detail="Continent not found")
 
 
+@router.get("/alias/{alias}", response_model=Continent, status_code=200)
+@inject
+async def get_continent_by_alias(
+    alias: str,
+    service: IContinentService = Depends(Provide[Container.continent_service]),
+) -> dict:
+
+    if continent := await service.get_continent_by_alias(alias):
+        return continent.model_dump()
+
+    raise HTTPException(status_code=404, detail="Continent not found")
+
+
+
 @router.put("/{continent_id}", response_model=Continent, status_code=201)
 @inject
 async def update_continent(

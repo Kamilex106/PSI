@@ -23,10 +23,12 @@ continent_table = sqlalchemy.Table(
 )
 
 user_table = sqlalchemy.Table(
-    "user",
+    "users",
     metadata,
     sqlalchemy.Column("id", sqlalchemy.Integer, primary_key=True),
     sqlalchemy.Column("name", sqlalchemy.String),
+    sqlalchemy.Column("password", sqlalchemy.String),
+
 )
 
 country_table = sqlalchemy.Table(
@@ -38,16 +40,16 @@ country_table = sqlalchemy.Table(
     sqlalchemy.Column("language", sqlalchemy.String),
     sqlalchemy.Column(
         "continent_id",
-        sqlalchemy.ForeignKey("continent.id"),
+        sqlalchemy.ForeignKey("continents.id"),
         nullable=False,
     ),
     sqlalchemy.Column(
         "user_id",
-        sqlalchemy.ForeignKey("user.id"),
+        sqlalchemy.ForeignKey("users.id"),
         nullable=False,
     ),
     sqlalchemy.Column("area", sqlalchemy.Integer),
-    sqlalchemy.Column("PKB", sqlalchemy.Integer),
+    sqlalchemy.Column("pkb", sqlalchemy.Integer),
 )
 
 db_uri = (
